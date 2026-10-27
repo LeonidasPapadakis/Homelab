@@ -7,19 +7,17 @@ I'm building this homelab for two reasons:
 - *To learn real networking* - everything sits on VLANs behind a real firewall.
 
 ## Current setup
-- One Proxmox node with its own firewalled network:
+- One Proxmox node built for running LLMs, with its own firewalled network:
     - OPNsense VM routing and logging everything between VLANs and enforcing firewall rules
     - Ollama and ComfyUI LXCs with GPU passthrough for running LLMs and diffusion models
     - Private OpenWebUI, LiteLLM and Gitea services
     - A SearXNG/Crawl4AI box giving agents and OpenWebUI web access
     - Isolated VMs running Hermes agent
 - Raspberry Pi running video/audio streaming services
-- Cisco Cisco Catalyst 2960L switch
+- Cisco Catalyst 2960L switch
 
 ## My next steps
 - My home network is flat for now, I plan to buy a Cisco router for a router-on-a-stick setup and segment it into VLANs
 - Two more Proxmox nodes planned:
     - a storage box to run TrueNAS and my Gitea service
     - a box for my public-facing web services, so they can sit separately from everything else
-
-
