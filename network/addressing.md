@@ -7,7 +7,7 @@ The base network `10.0.0.0/8` is carved up into `/16`s by site.
 | --- | --- | --- | --- | --- |
 | 0 | home | `10.0.0.0/16` | physical home network | **live** |
 | 1 | powerhouse | `10.1.0.0/16` | Proxmox internal (GPU inference) | **live** |
-| 2 | storage | `10.2.0.0/16` | Proxmox internal (low-power always-on) | **planned** |
+| 2 | storage | `10.2.0.0/16` | Proxmox internal (RAID drive array) | **planned** |
 | 3 | edge | `10.3.0.0/16` | Proxmox internal (public web services) | **planned** |
 
 ## Rules
