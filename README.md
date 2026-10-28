@@ -17,7 +17,6 @@ I'm building this homelab for two reasons:
 - Cisco Catalyst 2960L switch
 
 ## My next steps
-- My home network is flat for now, I plan to buy a Cisco router for a router-on-a-stick setup and segment it into VLANs
 - Two more Proxmox nodes planned:
     - a storage box to run TrueNAS and my Gitea service
     - a box for my public-facing web services, so they can sit separately from everything else
