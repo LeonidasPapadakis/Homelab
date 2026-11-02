@@ -12,7 +12,7 @@ I'm building this homelab for two reasons:
 - Raspberry Pi running streaming services
 - One Proxmox node built for running LLMs, with its own firewalled network:
     - OPNsense VM routing between VLANs and enforcing firewall rules
-    - Ollama and ComfyUI LXCs with GPU passthrough for running LLMs and diffusion models
+    - Ollama and ComfyUI VMs with GPU passthrough for running LLMs and diffusion models
     - Private OpenWebUI, LiteLLM and Gitea services
     - A SearXNG/Crawl4AI box giving agents and OpenWebUI web access
     - Hermes agent backends
@@ -22,7 +22,17 @@ I'm building this homelab for two reasons:
 
 ![Network plan](network/network_plan.png)
 
+## Directory index
+
+| Doc | What it covers |
+| --- | --- |
+| [network/](network/README.md) | sites, addressing and VLAN plan |
+| [network/opnsense.md](network/opnsense.md) | firewall roles and rule sets |
+| [network/remote-access.md](network/remote-access.md) | Tailscale, subnet routers |
+| [services/ollama.md](services/ollama.md) | LLM inference on 4x V100s |
+
 ## My next steps
+
 - Two more Proxmox nodes planned:
     - a storage box to run TrueNAS, and my Gitea service
     - a box for public-facing web services
