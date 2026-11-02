@@ -1,15 +1,9 @@
 # ollama
 
-LLM inference with 4x 32gb Tesla V100s. One model per container, with LiteLLM and OpenWebUI in front that show a single API and web UI.
+LLM inference with 4x 32gb Tesla V100s. ollama runs in a single VM, with LiteLLM and OpenWebUI in front that show a single API and web UI.
 
 ## Why ollama at all
 The V100s are Volta, which newer inference platforms have been dropping support for while llama.cpp (what ollama runs on) still supports them. The cards also have no NVLink, so tensor parallelism across GPUs isn't on the menu. What I do have is llama.cpp splitting the model's layers across the four cards, which runs fine over plain PCIe, although slower than NVLink would be. Given this hardware, my realistic options were ollama or llama.cpp directly, and ollama won because packaging, model management and the API were already done.
-
-## Why one model per instance
-I ran two agent machines against one ollama instance packed with models. I changed the model config on one of them, and the other kept sending requests that expected the old one, so the agents effectively fought over the instance and both got unusable performance due to the constant model re-loads. One model per container prevents this; switching a model is just booting a different container, and a crash takes down one model instead of the whole inference setup.
-
-## Why LXCs
-Virtually no overhead compared to running the service on the host, and I can spin a container up or shut it down in seconds when I want a model's VRAM back. The NVIDIA userspace driver installs inside the container with `--no-kernel-modules` and the kernel module stays on the host. A VM per GPU would be better isolation, but it dedicates the whole card and boots slower than I care to wait.
 
 ## Settings
 The environment I run ollama with:
@@ -21,14 +15,6 @@ Environment="OLLAMA_KEEP_ALIVE=-1" # re-loading a 100GB model per request means 
 Environment="OLLAMA_MAX_LOADED_MODELS=1" # ensures VRAM reserved for context isn't stolen by a second model
 Environment="OLLAMA_NUM_PARALLEL=2" # two agents may share one model at once, can be raised if VRAM budget allows
 ```
-
-## Naming
-Hostnames are as follows: `ollama{gpus}{type}`, IP: `10.1.30.{gpus}{type}`, where type 1 = MoE, 2 = dense. For example, a dense model across three V100s is `ollama32` at `10.1.30.32`. The name + IP say which model and how many GPUs it runs on, so I never need to search through my documentation.
-
-## Setup
-GPU passthrough LXC on the compute VLAN. The NVIDIA driver installs inside the container with `--no-kernel-modules`, since the kernel module has to live on the Proxmox host.
-
-Only the services VLAN reaches ollama. The compute VLAN can't touch the LAN at all.
 
 ## What runs on it
 The 112GB model below is split across the 4x32GB of VRAM:

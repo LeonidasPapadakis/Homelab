@@ -1,6 +1,6 @@
 # Remote access with Tailscale
 
-Nothing listens on the internet, all remote access rides the Tailnet.
+Nothing listens on the internet, all remote access to my Proxmox node goes through my Tailnet.
 
 ## Subnet routers
 
