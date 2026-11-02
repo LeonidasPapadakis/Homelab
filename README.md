@@ -17,6 +17,11 @@ I'm building this homelab for two reasons:
     - A SearXNG/Crawl4AI box giving agents and OpenWebUI web access
     - Hermes agent backends
 
+
+## Network plan
+
+![Network plan](network/network_plan.png)
+
 ## My next steps
 - Two more Proxmox nodes planned:
     - a storage box to run TrueNAS, and my Gitea service

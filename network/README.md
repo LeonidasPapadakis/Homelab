@@ -42,7 +42,3 @@ So for `10.1.20.32`: site 1 (powerhouse), VLAN 20 (services), host 32. I use thi
 | 60 | intake | `10.x.60.0/24` | web scrapers processing untrusted content | WAN via intake-VPN (kill-switched) | `10.x.60.1` (OPNsense) |
 | none | arena | `192.0.2.0/24` | machines with simulated web access | isolated virtual bridge only | `192.0.2.1` (PVE VMBR2) |
 | none | vault | none | isolated machines with no network access at all | none | none |
-
-## Network plan
-
-![Network plan](network_plan.png)
