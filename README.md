@@ -1,6 +1,6 @@
 # Leo's homelab
 
-Welcome to my homelab repo! Here you'll find notes and configurations for my applications, services and the networks they run on. It's still in its early stages; this repo documents the build as it progresses.
+Welcome to my homelab repo! Here you'll find notes and configurations for my applications, services and the networks they run on. This repo documents the build as it progresses.
 
 I'm building this homelab for two reasons:
 - *To stop paying for subscriptions* - I run my own LLMs, streaming and git services locally and privately.
@@ -26,7 +26,7 @@ I'm building this homelab for two reasons:
 
 | Doc | What it covers |
 | --- | --- |
-| [network/](network/README.md) | sites, addressing and VLAN plan |
+| [network/](network/) | sites, addressing and VLAN plan |
 | [network/opnsense.md](network/opnsense.md) | firewall roles and rule sets |
 | [network/remote-access.md](network/remote-access.md) | Tailscale, subnet routers |
 | [services/ollama.md](services/ollama.md) | LLM inference on 4x V100s |

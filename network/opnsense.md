@@ -17,19 +17,19 @@ Any aditional rules are host-specific, e.g. if an agent machine needs access to 
 | Rule | Src zone | Dst | Action |
 | --- | --- | --- | --- |
 | management -> any | management | any | pass |
-| services -> dns | services | gateway:53 | pass |
+| services -> dns | services | firewall:53 | pass |
 | services -X-> LAN | services | 10.0.0.0/16 | block |
 | services -> WAN | services | any | pass |
-| infra -> ntp | infra | gateway:123 | pass |
+| infra -> ntp | infra | firewall:123 | pass |
 | infra -X-> any | infra | any | block |
-| family -> dns | family | gateway:53 | pass |
+| family -> dns | family | firewall:53 | pass |
 | family -> streaming | family | pi-a:streaming_ports | pass |
 | family -X-> LAN | family | 10.0.0.0/16 | block |
 | family -> WAN | family | any | pass |
-| guest -> dns | guest | gateway:53 | pass |
+| guest -> dns | guest | firewall:53 | pass |
 | guest -X-> LAN | guest | 10.0.0.0/16 | block |
 | guest -> WAN | guest | any | pass |
-| iot -> dns | iot | gateway:53 | pass |
+| iot -> dns | iot | firewall:53 | pass |
 | iot -X-> LAN | iot | 10.0.0.0/16 | block |
 | iot -> WAN | iot | any | pass |
 | cctv -X-> any | cctv | any | block |
